@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #f9f8f6;
+  --color-foreground: #1a1a1a;
+  --color-muted-foreground: #6b6b6b;
+  --color-border: #e5e5e5;
+  --font-sans: "DM Sans", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.wave-underline {
+  clip-path: inset(0 100% 0 0);
+}
+
+.wave-underline path {
+  stroke-width: 0.6;
+  stroke-dasharray: 2 2;
+  animation: wave-flow 0.8s linear infinite;
+  animation-delay: 1.2s;
+}
+
+@keyframes wave-flow {
+  to {
+    stroke-dashoffset: -6;
+  }
+}
+
+.full-bleed {
+  position: relative;
+}
+
+.full-bleed::before,
+.full-bleed::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  pointer-events: none;
+  border-color: var(--color-border);
+  border-style: dashed;
+}
+
+.full-bleed::before {
+  top: 0;
+  border-top-width: 1px;
+}
+
+.full-bleed::after {
+  bottom: 0;
+  border-bottom-width: 1px;
+}
+
+.link-icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.link-group:hover .link-icon {
+  transform: translateY(-1px);
+}
